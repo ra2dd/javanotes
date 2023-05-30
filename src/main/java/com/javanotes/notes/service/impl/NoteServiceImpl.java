@@ -5,10 +5,12 @@ import com.javanotes.notes.models.Note;
 import com.javanotes.notes.repository.NoteRepository;
 import com.javanotes.notes.service.NoteService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Service
 public class NoteServiceImpl implements NoteService
 {
     private NoteRepository noteRepository;
