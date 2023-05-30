@@ -1,0 +1,69 @@
+/*
+    Applying grid layout to the page
+ */
+.grid-container
+{
+    display: grid;
+    grid-template-areas:
+        "header header"
+        "sidebar content"
+        "footer footer";
+    grid-template-columns: 1fr 4fr;
+    gap: 20px;
+}
+
+header
+{
+    grid-area: header;
+}
+
+/* Applying flexbox layout to note list */
+.content-container
+{
+    grid-area: content;
+
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-around;
+}
+
+aside
+{
+    grid-area: sidebar;
+}
+
+footer
+{
+    grid-area: footer;
+}
+
+
+/*
+    Styling specific grid elements
+ */
+header, footer
+{
+    border: 2px solid orange;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: lightcyan;
+}
+
+
+/*
+    Styling notes
+ */
+.note-container
+{
+    flex: 1 400px;
+
+    margin: 2%;
+    padding: 1%;
+
+
+    border: 2px solid orange;
+    border-radius: 5px;
+    background-color: lightgray;
+}
+
