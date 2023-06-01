@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+    <head>
+        <meta charset="UTF-8">
+        <title layout:title-pattern="$CONTENT_TITLE - $LAYOUT-TITLE">Notes</title>
+        <meta name="viewport" content="width=device-width" />
+        <link rel="stylesheet" href="stylesheets/main.css" />
+    </head>
+
+    <body>
+        <div class="grid-container">
+            <header layout:fragment="header">
+                <!-- layout -->
+            </header>
+
+            <section layout:fragment="content-container" class="content-container">
+                <!-- layout -->
+            </section>
+
+            <aside class="sidebar">
+                <h3>Links:</h3>
+            </aside>
+
+            <footer>
+                <p>Footer</p>
+            </footer>
+        </div>
+    </body>
+</html>
