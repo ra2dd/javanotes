@@ -1,6 +1,7 @@
 package com.javanotes.notes.controller;
 
 import com.javanotes.notes.dto.NoteDto;
+import com.javanotes.notes.models.Note;
 import com.javanotes.notes.service.NoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,5 +30,13 @@ public class NoteController
         String[] test = {"test1", "test2", "test3"};
         model.addAttribute("test", test);
         return "notes-list";
+    }
+
+    @GetMapping("/notes/new")
+    public String createNoteForm(Model model)
+    {
+        Note note = new Note();
+        model.addAttribute("note", note);
+        return "notes-create";
     }
 }

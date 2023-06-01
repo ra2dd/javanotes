@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+
+    <header layout:fragment="header">
+        <h1>Add new note</h1>
+    </header>
+
+    <section layout:fragment="content-container" class="content-container">
+        <div class="form-container">
+            <form>
+                <label for="note-title">Note title:</label>
+                <input type="text" id="note-title" name="note-title" />
+
+                <label for="note-content">Note content:</label>
+                <input type="text" id="note-content" name="note-content" />
+
+                <label for="note-url">Note url</label>
+                <input type="text" id="note-url" name="note-url" />
+
+                <input type="submit" value="Submit" />
+            </form>
+        </div>
+    </section>
+
+</html>
