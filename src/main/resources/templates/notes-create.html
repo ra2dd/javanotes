@@ -9,14 +9,14 @@
     </header>
 
     <section layout:fragment="content-container" class="content-container form-container">
-        <form>
+        <form role="form" method="post" th:action="@{/notes/new}" th:object="${note}">
             <table>
                 <tr>
                     <th scope="row">
                         <label for="note-title">Note title:</label>
                     </th>
                     <td>
-                        <input type="text" id="note-title" name="note-title" />
+                        <input type="text" id="note-title" name="note-title" th:field="*{title}"/>
                     </td>
                 </tr>
 
@@ -25,16 +25,16 @@
                         <label for="note-title">Note content:</label>
                     </th>
                     <td>
-                        <input type="text" id="note-content" name="note-content" />
+                        <input type="text" id="note-content" name="note-content" th:field="*{content}"/>
                     </td>
                 </tr>
 
                 <tr>
                     <th scope="row">
-                        <label for="note-title">Note url:</label>
+                        <label for="note-url">Note url:</label>
                     </th>
                     <td>
-                        <input type="url" id="note-url" name="note-url" />
+                        <input type="url" id="note-url" name="note-url" th:field="*{url}"/>
                     </td>
                 </tr>
 

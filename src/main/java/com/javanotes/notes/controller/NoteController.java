@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -41,10 +42,10 @@ public class NoteController
         return "notes-create";
     }
 
-    @GetMapping("/notes/new")
+    @PostMapping("/notes/new")
     public String saveNote(@ModelAttribute("note") Note note)
     {
         noteService.saveNote(note);
-        return "/redirect:/notes";
+        return "redirect:/notes";
     }
 }
