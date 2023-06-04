@@ -10,4 +10,6 @@ public interface NoteService
     List<NoteDto> findAllNotes();
 
     Note saveNote(Note note);
+
+    NoteDto findNoteById(long noteId);
 }

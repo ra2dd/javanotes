@@ -34,6 +34,13 @@ public class NoteServiceImpl implements NoteService
         return noteRepository.save(note);
     }
 
+    @Override
+    public NoteDto findNoteById(long noteId)
+    {
+        Note note = noteRepository.findById(noteId).get();
+        return mapToNoteDto(note);
+    }
+
     private NoteDto mapToNoteDto(Note note)
     {
         NoteDto noteDto = NoteDto.builder()

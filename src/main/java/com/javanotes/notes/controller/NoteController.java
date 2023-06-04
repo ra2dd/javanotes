@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -34,6 +35,9 @@ public class NoteController
         return "notes-list";
     }
 
+    /*
+        Controllers for creating new note
+     */
     @GetMapping("/notes/new")
     public String createNoteForm(Model model)
     {
@@ -48,4 +52,25 @@ public class NoteController
         noteService.saveNote(note);
         return "redirect:/notes";
     }
+
+
+    /*
+        Controllers for updating a note
+     */
+    @GetMapping("/notes/{noteId}/update")
+    public String updateNoteForm(@PathVariable("noteId") long noteId, Model model)
+    {
+        NoteDto note = noteService.findNoteById(noteId);
+        model.addAttribute("note", note);
+        return "clubs-update";
+    }
+
+    /*
+    @PostMapping("/notes/{noteId}/update")
+    public String updateNote()
+    {
+
+    }
+    */
+
 }
