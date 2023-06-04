@@ -28,6 +28,12 @@ public class NoteServiceImpl implements NoteService
         return notes.stream().map((note) -> mapToNoteDto(note)).collect(Collectors.toList());
     }
 
+    @Override
+    public Note saveNote(Note note)
+    {
+        return noteRepository.save(note);
+    }
+
     private NoteDto mapToNoteDto(Note note)
     {
         NoteDto noteDto = NoteDto.builder()
