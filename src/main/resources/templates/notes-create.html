@@ -11,16 +11,41 @@
     <section layout:fragment="content-container" class="content-container">
         <div class="form-container">
             <form>
-                <label for="note-title">Note title:</label>
-                <input type="text" id="note-title" name="note-title" />
+                <table>
+                    <tr>
+                        <th scope="row">
+                            <label for="note-title">Note title:</label>
+                        </th>
+                        <td>
+                            <input type="text" id="note-title" name="note-title" />
+                        </td>
+                    </tr>
 
-                <label for="note-content">Note content:</label>
-                <input type="text" id="note-content" name="note-content" />
+                    <tr>
+                        <th scope="row">
+                            <label for="note-title">Note content:</label>
+                        </th>
+                        <td>
+                            <input type="text" id="note-content" name="note-content" />
+                        </td>
+                    </tr>
 
-                <label for="note-url">Note url</label>
-                <input type="text" id="note-url" name="note-url" />
+                    <tr>
+                        <th scope="row">
+                            <label for="note-title">Note url:</label>
+                        </th>
+                        <td>
+                            <input type="text" id="note-url" name="note-url" />
+                        </td>
+                    </tr>
 
-                <input type="submit" value="Submit" />
+                    <tr>
+                        <th scope="row">
+                            <input type="submit" value="Submit" />
+                        </th>
+                    </tr>
+
+                </table>
             </form>
         </div>
     </section>
