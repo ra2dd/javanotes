@@ -62,15 +62,16 @@ public class NoteController
     {
         NoteDto note = noteService.findNoteById(noteId);
         model.addAttribute("note", note);
-        return "clubs-update";
+        return "note-update";
     }
 
-    /*
     @PostMapping("/notes/{noteId}/update")
-    public String updateNote()
+    public String updateNote(@PathVariable("noteId") long noteId, @ModelAttribute("note") NoteDto note)
     {
-
+        note.setId(noteId);
+        noteService.updateNote(note);
+        return "redirect:/notes";
     }
-    */
+
 
 }

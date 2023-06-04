@@ -41,6 +41,25 @@ public class NoteServiceImpl implements NoteService
         return mapToNoteDto(note);
     }
 
+    @Override
+    public void updateNote(NoteDto noteDto)
+    {
+        Note note = mapToNote(noteDto);
+        noteRepository.save(note);
+    }
+
+    private Note mapToNote(NoteDto noteDto)
+    {
+        Note noteMapped = Note.builder()
+                .id(noteDto.getId())
+                .title(noteDto.getTitle())
+                .content(noteDto.getContent())
+                .url(noteDto.getUrl())
+                .createTime(noteDto.getCreateTime())
+                .build();
+        return noteMapped;
+    }
+
     private NoteDto mapToNoteDto(Note note)
     {
         NoteDto noteDto = NoteDto.builder()

@@ -12,4 +12,6 @@ public interface NoteService
     Note saveNote(Note note);
 
     NoteDto findNoteById(long noteId);
+
+    void updateNote(NoteDto note);
 }

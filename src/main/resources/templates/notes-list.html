@@ -12,6 +12,7 @@
                 <div class="note-container" th:each="note :${notes}">
                     <h2 th:text="${note.title}">Note Title</h2>
                     <p th:text="${note.content}">Note Content</p>
+                    <a th:href="@{/notes/{noteId}/update(noteId=${note.id})}">Edit</a>
                 </div>
     </section>
 
