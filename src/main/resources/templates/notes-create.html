@@ -8,46 +8,44 @@
         <h1>Add new note</h1>
     </header>
 
-    <section layout:fragment="content-container" class="content-container">
-        <div class="form-container">
-            <form>
-                <table>
-                    <tr>
-                        <th scope="row">
-                            <label for="note-title">Note title:</label>
-                        </th>
-                        <td>
-                            <input type="text" id="note-title" name="note-title" />
-                        </td>
-                    </tr>
+    <section layout:fragment="content-container" class="content-container form-container">
+        <form>
+            <table>
+                <tr>
+                    <th scope="row">
+                        <label for="note-title">Note title:</label>
+                    </th>
+                    <td>
+                        <input type="text" id="note-title" name="note-title" />
+                    </td>
+                </tr>
 
-                    <tr>
-                        <th scope="row">
-                            <label for="note-title">Note content:</label>
-                        </th>
-                        <td>
-                            <input type="text" id="note-content" name="note-content" />
-                        </td>
-                    </tr>
+                <tr>
+                    <th scope="row">
+                        <label for="note-title">Note content:</label>
+                    </th>
+                    <td>
+                        <input type="text" id="note-content" name="note-content" />
+                    </td>
+                </tr>
 
-                    <tr>
-                        <th scope="row">
-                            <label for="note-title">Note url:</label>
-                        </th>
-                        <td>
-                            <input type="text" id="note-url" name="note-url" />
-                        </td>
-                    </tr>
+                <tr>
+                    <th scope="row">
+                        <label for="note-title">Note url:</label>
+                    </th>
+                    <td>
+                        <input type="url" id="note-url" name="note-url" />
+                    </td>
+                </tr>
 
-                    <tr>
-                        <th scope="row">
-                            <input type="submit" value="Submit" />
-                        </th>
-                    </tr>
+                <tr>
+                    <th scope="row">
+                        <input type="submit" value="Submit" />
+                    </th>
+                </tr>
 
-                </table>
-            </form>
-        </div>
+            </table>
+        </form>
     </section>
 
 </html>

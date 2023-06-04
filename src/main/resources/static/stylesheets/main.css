@@ -6,6 +6,7 @@ html
 body
 {
     margin: 2% 4%;
+    font-family: 'Ubuntu';
 }
 
 /*
@@ -81,14 +82,45 @@ header, footer
 /*
     Styling forms
  */
-.form-row
+
+.form-container
 {
-    margin: 1.2rem;
+    flex-flow: column wrap;
+    justify-content: start;
+}
+
+form
+{
+    font-size: 1.4rem;
+    padding: 1.2rem;
+
+    border: 2px solid orange;
+    border-radius: 5px;
+    background-color: yellow;
+
+}
+
+tr > th
+{
+    padding: 1.5% 0.5%;
 }
 
 th
 {
-    all: initial;
+    font-weight: normal;
+    text-align: start;
+}
+
+input[type="text"], input[type="url"]
+{
+    padding: 0.4rem;
+    width: 40vw;
+    font-size: 1.1rem;
+}
+
+input[type="submit"]
+{
+    font-size: 1.3rem;
 }
 
 
