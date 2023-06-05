@@ -49,9 +49,13 @@ public class NoteController
     }
 
     @PostMapping("/notes/new")
-    public String saveNote(@ModelAttribute("note") Note note)
+    public String saveNote(@Valid @ModelAttribute("note") NoteDto noteDto, BindingResult result)
     {
-        noteService.saveNote(note);
+        if(result.hasErrors())
+        {
+            return "notes-create";
+        }
+        noteService.saveNote(noteDto);
         return "redirect:/notes";
     }
 

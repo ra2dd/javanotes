@@ -9,7 +9,7 @@ public interface NoteService
 {
     List<NoteDto> findAllNotes();
 
-    Note saveNote(Note note);
+    Note saveNote(NoteDto noteDto);
 
     NoteDto findNoteById(long noteId);
 

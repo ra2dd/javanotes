@@ -18,6 +18,7 @@
                     <td>
                         <input type="text" id="note-title" name="note-title" th:field="*{title}"/>
                     </td>
+                    <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="form-error"> </p>
                 </tr>
 
                 <tr>
@@ -27,6 +28,7 @@
                     <td>
                         <input type="text" id="note-content" name="note-content" th:field="*{content}"/>
                     </td>
+                    <p th:if="${#fields.hasErrors('content')}" th:errors="*{content}" class="form-error"> </p>
                 </tr>
 
                 <tr>

@@ -29,8 +29,9 @@ public class NoteServiceImpl implements NoteService
     }
 
     @Override
-    public Note saveNote(Note note)
+    public Note saveNote(NoteDto noteDto)
     {
+        Note note = mapToNote(noteDto);
         return noteRepository.save(note);
     }
 
