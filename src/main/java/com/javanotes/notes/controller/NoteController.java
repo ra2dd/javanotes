@@ -66,8 +66,8 @@ public class NoteController
     @GetMapping("/notes/{noteId}/update")
     public String updateNoteForm(@PathVariable("noteId") long noteId, Model model)
     {
-        NoteDto note = noteService.findNoteById(noteId);
-        model.addAttribute("note", note);
+        NoteDto noteDto = noteService.findNoteById(noteId);
+        model.addAttribute("note", noteDto);
         return "note-update";
     }
 
@@ -82,6 +82,18 @@ public class NoteController
         note.setId(noteId);
         noteService.updateNote(note);
         return "redirect:/notes";
+    }
+
+
+    /*
+        Controllers for detail view
+     */
+    @GetMapping("/notes/{noteId}")
+    public String noteDetail(@PathVariable("noteId") long noteId, Model model)
+    {
+        NoteDto noteDto = noteService.findNoteById(noteId);
+        model.addAttribute("note", noteDto);
+        return "note-detail";
     }
 
 

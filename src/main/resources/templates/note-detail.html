@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+
+    <header layout:fragment="header">
+        <h1>Note details</h1>
+    </header>
+
+    <section layout:fragment="content-container" class="content-container column-flow-container">
+        <div class="detail-container">
+            <h2 th:text="${note.title}"></h2>
+            <p th:text="${note.content}"></p>
+            <a th:href="${note.url}"></a>
+        </div>
+    </section>
+
+</html>

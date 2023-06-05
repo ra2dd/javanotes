@@ -8,7 +8,7 @@
         <h1>Add new note</h1>
     </header>
 
-    <section layout:fragment="content-container" class="content-container form-container">
+    <section layout:fragment="content-container" class="content-container column-flow-container">
         <form role="form" method="post" th:action="@{/notes/new}" th:object="${note}">
             <table>
                 <tr>

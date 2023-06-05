@@ -83,7 +83,7 @@ header, footer
     Styling forms
  */
 
-.form-container
+.column-flow-container
 {
     flex-flow: column wrap;
     justify-content: start;

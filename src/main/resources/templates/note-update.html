@@ -8,7 +8,7 @@
     <h1>Update note</h1>
 </header>
 
-<section layout:fragment="content-container" class="content-container form-container">
+<section layout:fragment="content-container" class="content-container column-flow-container">
     <form role="form" method="post" th:action="@{/notes/{noteId}/update(noteId=${note.id})}" th:object="${note}">
         <table>
             <input type="hidden" th:field="*{id}" />
