@@ -3,9 +3,11 @@ package com.javanotes.notes.controller;
 import com.javanotes.notes.dto.NoteDto;
 import com.javanotes.notes.models.Note;
 import com.javanotes.notes.service.NoteService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -66,8 +68,13 @@ public class NoteController
     }
 
     @PostMapping("/notes/{noteId}/update")
-    public String updateNote(@PathVariable("noteId") long noteId, @ModelAttribute("note") NoteDto note)
+    public String updateNote(@PathVariable("noteId") long noteId, @Valid @ModelAttribute("note") NoteDto note,
+                             BindingResult result)
     {
+        if(result.hasErrors())
+        {
+            return "note-update";
+        }
         note.setId(noteId);
         noteService.updateNote(note);
         return "redirect:/notes";

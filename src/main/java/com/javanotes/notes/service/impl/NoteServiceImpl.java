@@ -20,7 +20,7 @@ public class NoteServiceImpl implements NoteService
     {
         this.noteRepository = noteRepository;
     }
-
+    
     @Override
     public List<NoteDto> findAllNotes()
     {
@@ -48,6 +48,10 @@ public class NoteServiceImpl implements NoteService
         noteRepository.save(note);
     }
 
+
+    /*
+        Mappers
+     */
     private Note mapToNote(NoteDto noteDto)
     {
         Note noteMapped = Note.builder()

@@ -123,5 +123,9 @@ input[type="submit"]
     font-size: 1.3rem;
 }
 
+.form-error
+{
+    font-size: 1.1rem;
+}
 
 
