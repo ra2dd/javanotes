@@ -97,4 +97,14 @@ public class NoteController
     }
 
 
+    /*
+        Controllers for deleting a note
+     */
+    @GetMapping("/notes/{noteId}/delete")
+    public String deleteNote(@PathVariable("noteId") long noteId    )
+    {
+        noteService.deleteNote(noteId);
+        return "redirect:/notes";
+    }
+
 }

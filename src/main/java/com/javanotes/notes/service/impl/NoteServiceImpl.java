@@ -49,6 +49,12 @@ public class NoteServiceImpl implements NoteService
         noteRepository.save(note);
     }
 
+    @Override
+    public void deleteNote(long noteId)
+    {
+        noteRepository.deleteById(noteId);
+    }
+
 
     /*
         Mappers

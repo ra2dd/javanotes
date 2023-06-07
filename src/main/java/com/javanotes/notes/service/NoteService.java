@@ -14,4 +14,6 @@ public interface NoteService
     NoteDto findNoteById(long noteId);
 
     void updateNote(NoteDto note);
+
+    void deleteNote(long noteId);
 }

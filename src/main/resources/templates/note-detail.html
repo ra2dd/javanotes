@@ -13,6 +13,7 @@
             <h2 th:text="${note.title}"></h2>
             <p th:text="${note.content}"></p>
             <a th:href="${note.url}"></a>
+            <a th:href="@{/notes/{noteId}/delete(noteId=${note.id})}">Delete note</a>
         </div>
     </section>
 
