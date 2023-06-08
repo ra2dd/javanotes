@@ -80,13 +80,13 @@ public class NoteServiceImpl implements NoteService
 
     private NoteDto mapToNoteDto(Note note)
     {
-        NoteDto noteDto = NoteDto.builder()
+        NoteDto noteDtoMapped = NoteDto.builder()
                 .id(note.getId())
                 .title(note.getTitle())
                 .content(note.getContent())
                 .url(note.getUrl())
                 .createTime(note.getCreateTime())
                 .build();
-        return noteDto;
+        return noteDtoMapped;
     }
 }
