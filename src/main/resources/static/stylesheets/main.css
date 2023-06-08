@@ -63,7 +63,7 @@ header, footer
 
 
 /*
-    Styling notes
+    Styling notes list
  */
 .note-container
 {
@@ -78,11 +78,23 @@ header, footer
     background-color: lightgray;
 }
 
+.note-container > a
+{
+    text-decoration: none;
+}
+
+.notes-list-edit
+{
+    border: solid 1px black;
+    border-radius: 5px;
+    margin: 0 0 0.5% 1%;
+    padding: 0.5% 1%;
+}
+
 
 /*
     Styling forms
  */
-
 .column-flow-container
 {
     flex-flow: column wrap;
@@ -91,13 +103,17 @@ header, footer
 
 form
 {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+
     font-size: 1.4rem;
     padding: 1.2rem;
 
     border: 2px solid orange;
     border-radius: 5px;
     background-color: yellow;
-
 }
 
 tr > th
@@ -128,4 +144,26 @@ input[type="submit"]
     font-size: 1.1rem;
 }
 
+/*
+    Styling sidebar
+ */
+.sidebar-search-form
+{
+    align-items: start;
 
+    font-size: 1rem;
+    margin: 4%;
+
+    background-color: lightyellow;
+}
+
+.sidebar input[type="search"]
+{
+    width: 100%;
+}
+
+.sidebar input[type="submit"]
+{
+    font-size: 0.9rem;
+    margin: 2% 0;
+}

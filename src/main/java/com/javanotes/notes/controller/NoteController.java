@@ -105,9 +105,9 @@ public class NoteController
     }
 
     @GetMapping("/notes/search")
-    public String searchNote(@RequestParam(value = "query") String query, Model model)
+    public String searchNote(@RequestParam(value = "searchNoteQuery") String searchNoteQuery, Model model)
     {
-        List<NoteDto> notes = noteService.searchNotes(query);
+        List<NoteDto> notes = noteService.searchNotes(searchNoteQuery);
         model.addAttribute("notes", notes);
         return "notes-list";
     }

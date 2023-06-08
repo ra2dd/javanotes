@@ -13,9 +13,18 @@
                     <a th:href="@{/notes/{noteId}(noteId=${note.id})}">
                         <h2 th:text="${note.title}">Note Title</h2>
                         <p th:text="${note.content}">Note Content</p>
-                        <a th:href="@{/notes/{noteId}/update(noteId=${note.id})}">Edit</a>
+                        <a th:href="@{/notes/{noteId}/update(noteId=${note.id})}" class="notes-list-edit">Edit</a>
                     </a>
                 </div>
+    </section>
+
+    <section layout:fragment="sidebar-layout" class="sidebar-layout">
+        <div>
+            <form th:action="@{/notes/search}" class="sidebar-search-form">
+                <label name="searchNoteQuery">Search for note title</label>
+                <input type="search" name="searchNoteQuery" />
+            </form>
+        </div>
     </section>
 
 </html>
