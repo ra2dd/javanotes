@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -25,4 +27,7 @@ public class Note
     private String url;
     @CreationTimestamp
     private LocalDateTime createTime;
+
+    @OneToMany(mappedBy = "note", cascade = CascadeType.PERSIST)
+    private Set<Category> categories = new HashSet<>();
 }
