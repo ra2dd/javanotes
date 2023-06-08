@@ -6,6 +6,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -19,7 +22,12 @@ public class Category
     private Long id;
     private String name;
 
+    /*
     @ManyToOne
     @JoinColumn(name="note_id")
     private Note note;
+     */
+
+    @ManyToMany(mappedBy = "categories")
+    private Set<Note> notes = new HashSet<>();
 }

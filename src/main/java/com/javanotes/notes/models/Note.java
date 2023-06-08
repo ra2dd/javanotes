@@ -28,6 +28,15 @@ public class Note
     @CreationTimestamp
     private LocalDateTime createTime;
 
+    /*
     @OneToMany(mappedBy = "note", cascade = CascadeType.PERSIST)
+    private Set<Category> categories = new HashSet<>();
+     */
+
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(name = "Note_Category",
+            joinColumns = @JoinColumn(name = "note_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id")
+    )
     private Set<Category> categories = new HashSet<>();
 }
