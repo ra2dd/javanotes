@@ -35,7 +35,7 @@ header
 
     display: flex;
     flex-flow: row wrap;
-    align-items: center;
+    align-items: start;
     justify-content: space-around;
 }
 
@@ -89,6 +89,15 @@ header, footer
     border-radius: 5px;
     margin: 0 0 0.5% 1%;
     padding: 0.5% 1%;
+}
+
+
+/*
+Styling categories list
+ */
+.categories-container
+{
+    flex: 1 200px;
 }
 
 
