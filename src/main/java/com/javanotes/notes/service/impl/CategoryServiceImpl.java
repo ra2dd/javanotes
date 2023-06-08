@@ -4,7 +4,9 @@ import com.javanotes.notes.repository.CategoryRepository;
 import com.javanotes.notes.repository.NoteRepository;
 import com.javanotes.notes.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class CategoryServiceImpl implements CategoryService
 {
     private NoteRepository noteRepository;
