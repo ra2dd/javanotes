@@ -16,4 +16,6 @@ public interface NoteService
     void updateNote(NoteDto note);
 
     void deleteNote(long noteId);
+
+    List<NoteDto> searchNotes(String query);
 }

@@ -55,6 +55,13 @@ public class NoteServiceImpl implements NoteService
         noteRepository.deleteById(noteId);
     }
 
+    @Override
+    public List<NoteDto> searchNotes(String query)
+    {
+        List<Note> notes = noteRepository.querySearchNotes(query);
+        return notes.stream().map(note -> mapToNoteDto(note)).collect(Collectors.toList());
+    }
+
 
     /*
         Mappers
