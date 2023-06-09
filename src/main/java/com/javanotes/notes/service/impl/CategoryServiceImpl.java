@@ -31,6 +31,13 @@ public class CategoryServiceImpl implements CategoryService
         return categories.stream().map((category) -> mapToCategoryDto(category)).collect(Collectors.toList());
     }
 
+    @Override
+    public Category saveCategory(CategoryDto categoryDto)
+    {
+        Category category = mapToCategory(categoryDto);
+        return categoryRepository.save(category);
+    }
+
 
     private Category mapToCategory(CategoryDto categoryDto)
     {
