@@ -40,6 +40,13 @@
                     </td>
                 </tr>
 
+
+                <ul>
+                    <li th:each="categoryItem :${allCategories}" th:text="${categoryItem.name}"></li>
+                </ul>
+
+
+
                 <tr>
                     <th scope="row">
                         <input type="submit" value="Submit" />

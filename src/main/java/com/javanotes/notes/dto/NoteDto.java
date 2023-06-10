@@ -22,5 +22,5 @@ public class NoteDto
     private String url;
     private LocalDateTime createTime;
 
-    private List<Category> categories;
+    private List<CategoryDto> categories;
 }
