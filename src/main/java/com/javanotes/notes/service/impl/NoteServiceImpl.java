@@ -1,24 +1,30 @@
 package com.javanotes.notes.service.impl;
 
 import com.javanotes.notes.dto.NoteDto;
+import com.javanotes.notes.models.Category;
 import com.javanotes.notes.models.Note;
+import com.javanotes.notes.repository.CategoryRepository;
 import com.javanotes.notes.repository.NoteRepository;
 import com.javanotes.notes.service.NoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
 public class NoteServiceImpl implements NoteService
 {
     private NoteRepository noteRepository;
+    private CategoryRepository categoryRepository;
 
     @Autowired
-    public NoteServiceImpl(NoteRepository noteRepository)
+    public NoteServiceImpl(NoteRepository noteRepository, CategoryRepository categoryRepository)
     {
         this.noteRepository = noteRepository;
+        this.categoryRepository = categoryRepository;
     }
     
     @Override
@@ -74,6 +80,7 @@ public class NoteServiceImpl implements NoteService
                 .content(noteDto.getContent())
                 .url(noteDto.getUrl())
                 .createTime(noteDto.getCreateTime())
+                .categories(noteDto.getCategories())
                 .build();
         return noteMapped;
     }
@@ -86,6 +93,7 @@ public class NoteServiceImpl implements NoteService
                 .content(note.getContent())
                 .url(note.getUrl())
                 .createTime(note.getCreateTime())
+                .categories(note.getCategories())
                 .build();
         return noteDtoMapped;
     }

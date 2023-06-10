@@ -6,7 +6,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -22,12 +24,6 @@ public class Category
     private Long id;
     private String name;
 
-    /*
-    @ManyToOne
-    @JoinColumn(name="note_id")
-    private Note note;
-     */
-
-    @ManyToMany(mappedBy = "categories")
-    private Set<Note> notes = new HashSet<>();
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "categories")
+    private List<Note> notes = new ArrayList<>();
 }

@@ -8,7 +8,9 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -28,15 +30,9 @@ public class Note
     @CreationTimestamp
     private LocalDateTime createTime;
 
-    /*
-    @OneToMany(mappedBy = "note", cascade = CascadeType.PERSIST)
-    private Set<Category> categories = new HashSet<>();
-     */
-
-    @ManyToMany(cascade = CascadeType.PERSIST)
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "Note_Category",
-            joinColumns = @JoinColumn(name = "note_id"),
-            inverseJoinColumns = @JoinColumn(name = "category_id")
-    )
-    private Set<Category> categories = new HashSet<>();
+            joinColumns = @JoinColumn(name = "note_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id", referencedColumnName = "id"))
+    private List<Category> categories = new ArrayList<>();
 }

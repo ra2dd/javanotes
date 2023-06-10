@@ -1,6 +1,7 @@
 package com.javanotes.notes.controller;
 
 import com.javanotes.notes.dto.NoteDto;
+import com.javanotes.notes.models.Category;
 import com.javanotes.notes.models.Note;
 import com.javanotes.notes.service.NoteService;
 import jakarta.validation.Valid;
@@ -10,7 +11,9 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 public class NoteController
@@ -52,6 +55,14 @@ public class NoteController
         {
             return "notes-create";
         }
+        /*
+        int intId = 1;
+        long exampleId = intId;
+        Category exampleCategory = new Category(exampleId, "test", null);
+        Set<Category> exampleSet = new HashSet<>();
+        exampleSet.add(exampleCategory);
+        noteDto.setCategories(exampleSet);
+         */
         noteService.saveNote(noteDto);
         return "redirect:/notes";
     }

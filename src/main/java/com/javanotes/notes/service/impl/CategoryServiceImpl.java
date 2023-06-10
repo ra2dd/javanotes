@@ -44,6 +44,7 @@ public class CategoryServiceImpl implements CategoryService
         Category categoryMapped = Category.builder()
                 .id(categoryDto.getId())
                 .name(categoryDto.getName())
+                .notes(categoryDto.getNotes())
                 .build();
         return categoryMapped;
     }
