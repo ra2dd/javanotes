@@ -13,11 +13,17 @@
             <h2 th:text="${note.title}"></h2>
             <p th:text="${note.content}"></p>
             <a th:href="${note.url}"></a>
+            <div class="note-categories">
+                <a th:each="category :${note.categories}" th:href="@{/categories/{categoryId}(categoryId=${category.id})}" th:text="${category.name}"></a>
+            </div>
             <a th:href="@{/notes/{noteId}/delete(noteId=${note.id})}">Delete note</a>
+            <a th:href="@{/notes/{noteId}/assign-categories(noteId=${note.id})}">Assign categories</a>
 
+            <!--
             <ul th:each="category :${note.categories}">
                 <li th:text="${category.name}"></li>
             </ul>
+            -->
         </div>
     </section>
 

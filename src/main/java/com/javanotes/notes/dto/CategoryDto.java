@@ -22,5 +22,5 @@ public class CategoryDto
     @NotEmpty(message = "You need to provide Category title.")
     private String name;
 
-    private List<Note> notes;
+    //private List<NoteDto> notes;
 }

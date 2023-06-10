@@ -93,6 +93,28 @@ header, footer
 
 
 /*
+    Styling note detail view
+ */
+.detail-container
+{
+    width: 100%;
+}
+.note-categories
+{
+    margin: 3% 0 4% 0;
+}
+.note-categories a
+{
+    text-decoration: none;
+    border: solid 1px orange;
+    border-radius: 5px;
+    padding: 0.5% 1%;
+    margin: 0.5% 1%;
+}
+
+
+
+/*
 Styling categories list
  */
 .categories-container

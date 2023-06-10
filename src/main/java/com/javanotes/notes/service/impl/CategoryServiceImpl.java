@@ -11,6 +11,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.javanotes.notes.mapper.CategoryMapper.mapToCategory;
+import static com.javanotes.notes.mapper.CategoryMapper.mapToCategoryDto;
+
 @Service
 public class CategoryServiceImpl implements CategoryService
 {
@@ -36,25 +39,5 @@ public class CategoryServiceImpl implements CategoryService
     {
         Category category = mapToCategory(categoryDto);
         return categoryRepository.save(category);
-    }
-
-
-    private Category mapToCategory(CategoryDto categoryDto)
-    {
-        Category categoryMapped = Category.builder()
-                .id(categoryDto.getId())
-                .name(categoryDto.getName())
-                .notes(categoryDto.getNotes())
-                .build();
-        return categoryMapped;
-    }
-
-    private CategoryDto mapToCategoryDto(Category category)
-    {
-        CategoryDto categoryDtoMapped = CategoryDto.builder()
-                .id(category.getId())
-                .name(category.getName())
-                .build();
-        return categoryDtoMapped;
     }
 }

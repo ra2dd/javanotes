@@ -23,6 +23,9 @@ public class CategoryController
         this.categoryService = categoryService;
     }
 
+    /*
+        Controller for listing categories
+     */
     @GetMapping("/categories")
     public String listCategories(Model model)
     {
@@ -31,6 +34,10 @@ public class CategoryController
         return "categories-list";
     }
 
+
+    /*
+        Controllers for creating a category
+     */
     @GetMapping("/categories/new")
     public String createCategoryForm(Model model)
     {
