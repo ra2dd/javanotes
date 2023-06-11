@@ -1,18 +1,24 @@
 package com.javanotes.notes.service.impl;
 
+import com.javanotes.notes.dto.CategoryDto;
 import com.javanotes.notes.dto.NoteDto;
 import com.javanotes.notes.models.Category;
 import com.javanotes.notes.models.Note;
 import com.javanotes.notes.repository.CategoryRepository;
 import com.javanotes.notes.repository.NoteRepository;
+import com.javanotes.notes.service.CategoryService;
 import com.javanotes.notes.service.NoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
+
+import static com.javanotes.notes.mapper.NoteMapper.mapToNote;
+import static com.javanotes.notes.mapper.NoteMapper.mapToNoteDto;
 
 @Service
 public class NoteServiceImpl implements NoteService
@@ -68,33 +74,21 @@ public class NoteServiceImpl implements NoteService
         return notes.stream().map(note -> mapToNoteDto(note)).collect(Collectors.toList());
     }
 
-
-    /*
-        Mappers
-     */
-    private Note mapToNote(NoteDto noteDto)
+    @Override
+    public void assignCategoriesToNote(NoteDto noteDto)
     {
-        Note noteMapped = Note.builder()
-                .id(noteDto.getId())
-                .title(noteDto.getTitle())
-                .content(noteDto.getContent())
-                .url(noteDto.getUrl())
-                .createTime(noteDto.getCreateTime())
-                .categories(noteDto.getCategories())
-                .build();
-        return noteMapped;
-    }
 
-    private NoteDto mapToNoteDto(Note note)
-    {
-        NoteDto noteDtoMapped = NoteDto.builder()
-                .id(note.getId())
-                .title(note.getTitle())
-                .content(note.getContent())
-                .url(note.getUrl())
-                .createTime(note.getCreateTime())
-                .categories(note.getCategories())
-                .build();
-        return noteDtoMapped;
+        // Creating an array for fetching categories details based on their id
+        List<Category> markedCategoriesList = new ArrayList<>();
+
+        for (CategoryDto categoryDto : noteDto.getCategories())
+        {
+            markedCategoriesList.add(categoryRepository.findById(categoryDto.getId()).get());
+        }
+
+        Note note = noteRepository.findById(noteDto.getId()).get();
+        note.setCategories(markedCategoriesList);
+
+        noteRepository.save(note);
     }
 }

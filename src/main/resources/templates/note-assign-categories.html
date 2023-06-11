@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+
+    <header layout:fragment="header">
+        <h1>Add new note</h1>
+    </header>
+
+    <section layout:fragment="content-container" class="content-container column-flow-container">
+
+        <form role="form" method="post" th:action="@{/notes/{noteId}/assign-categories(noteId=${noteId})}" th:object="${note}">
+            <ul>
+                <li th:each="category :${noteCategoriesDto}">
+                    <div class="note-categories-checkbox-wrapper">
+                        <input type="checkbox" th:field="*{categories}" th:value="${category.id}" name="category-checkbox" id="category-checkbox">
+                        <label th:text="${category.name}" for="category-checkbox"></label>
+                    </div>
+                </li>
+            </ul>
+
+            <button type="submit">
+                Submit
+            </button>
+        </form>
+    </section>
+
+</html>

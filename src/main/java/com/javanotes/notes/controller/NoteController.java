@@ -1,8 +1,10 @@
 package com.javanotes.notes.controller;
 
+import com.javanotes.notes.dto.CategoryDto;
 import com.javanotes.notes.dto.NoteDto;
 import com.javanotes.notes.models.Category;
 import com.javanotes.notes.models.Note;
+import com.javanotes.notes.service.CategoryService;
 import com.javanotes.notes.service.NoteService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,19 +13,20 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 @Controller
 public class NoteController
 {
     private NoteService noteService;
+    private CategoryService categoryService;
 
     @Autowired
-    public NoteController(NoteService noteService)
+    public NoteController(NoteService noteService, CategoryService categoryService)
     {
         this.noteService = noteService;
+        this.categoryService = categoryService;
     }
 
     @GetMapping("/notes")
@@ -45,7 +48,7 @@ public class NoteController
     {
         Note note = new Note();
         model.addAttribute("note", note);
-        return "notes-create";
+        return "note-create";
     }
 
     @PostMapping("/notes/new")
@@ -53,7 +56,7 @@ public class NoteController
     {
         if(result.hasErrors())
         {
-            return "notes-create";
+            return "note-create";
         }
         /*
         int intId = 1;
@@ -80,15 +83,15 @@ public class NoteController
     }
 
     @PostMapping("/notes/{noteId}/update")
-    public String updateNote(@PathVariable("noteId") long noteId, @Valid @ModelAttribute("note") NoteDto note,
+    public String updateNote(@PathVariable("noteId") long noteId, @Valid @ModelAttribute("note") NoteDto noteDto,
                              BindingResult result)
     {
         if(result.hasErrors())
         {
             return "note-update";
         }
-        note.setId(noteId);
-        noteService.updateNote(note);
+        noteDto.setId(noteId);
+        noteService.updateNote(noteDto);
         return "redirect:/notes";
     }
 
@@ -123,4 +126,28 @@ public class NoteController
         return "notes-list";
     }
 
+
+    /*
+        Controllers for assigning categories to note
+     */
+    @GetMapping("/notes/{noteId}/assign-categories")
+    public String getCategories(@PathVariable("noteId") long noteId, Model model)
+    {
+        NoteDto noteDto = noteService.findNoteById(noteId);
+        model.addAttribute("note", noteDto);
+
+        List<CategoryDto> allCategoriesDto = new ArrayList<>(categoryService.findAllCategories());
+        model.addAttribute("noteCategoriesDto", allCategoriesDto);
+
+        return "note-assign-categories";
+    }
+
+    @PostMapping("/notes/{noteId}/assign-categories")
+    public String assignCategories(@PathVariable("noteId") long noteId, @ModelAttribute("note") NoteDto noteDto)
+    {
+        noteDto.setId(noteId);
+        System.out.println(noteDto);
+        noteService.assignCategoriesToNote(noteDto);
+        return "redirect:/notes/{noteId}";
+    }
 }

@@ -1,5 +1,6 @@
 package com.javanotes.notes.service;
 
+import com.javanotes.notes.dto.CategoryDto;
 import com.javanotes.notes.dto.NoteDto;
 import com.javanotes.notes.models.Note;
 
@@ -18,4 +19,6 @@ public interface NoteService
     void deleteNote(long noteId);
 
     List<NoteDto> searchNotes(String query);
+
+    void assignCategoriesToNote(NoteDto noteDto);
 }
