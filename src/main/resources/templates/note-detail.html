@@ -12,12 +12,20 @@
         <div class="detail-container">
             <h2 th:text="${note.title}"></h2>
             <p th:text="${note.content}"></p>
-            <a th:href="${note.url}"></a>
-            <div class="note-categories">
+
+            <div class="note-detail-url">
+                <a th:text="${note.url}">Url</a>
+            </div>
+
+            <div class="note-detail-categories">
                 <a th:each="category :${note.categories}" th:href="@{/categories/{categoryId}(categoryId=${category.id})}" th:text="${category.name}"></a>
             </div>
-            <a th:href="@{/notes/{noteId}/delete(noteId=${note.id})}">Delete note</a>
-            <a th:href="@{/notes/{noteId}/assign-categories(noteId=${note.id})}">Assign categories</a>
+
+            <div class="note-detail-links">
+                <a th:href="@{/notes/{noteId}/assign-categories(noteId=${note.id})}">Assign categories</a>
+                <a th:href="@{/notes/{noteId}/update(noteId=${note.id})}">Update note</a>
+                <a th:href="@{/notes/{noteId}/delete(noteId=${note.id})}">Delete note</a>
+            </div>
 
             <!--
             <ul th:each="category :${note.categories}">

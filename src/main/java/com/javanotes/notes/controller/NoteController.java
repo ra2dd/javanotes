@@ -29,6 +29,9 @@ public class NoteController
         this.categoryService = categoryService;
     }
 
+    /*
+        Controller for listing all notes
+     */
     @GetMapping("/notes")
     public String listNotes(Model model)
     {
@@ -39,6 +42,7 @@ public class NoteController
         model.addAttribute("test", test);
         return "notes-list";
     }
+
 
     /*
         Controllers for creating new note
@@ -88,8 +92,9 @@ public class NoteController
     {
         if(result.hasErrors())
         {
-            return "note-update";
+            return "redirect:/notes/{noteId}";
         }
+
         noteDto.setId(noteId);
         noteService.updateNote(noteDto);
         return "redirect:/notes";

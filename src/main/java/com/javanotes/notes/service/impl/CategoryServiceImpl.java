@@ -27,6 +27,9 @@ public class CategoryServiceImpl implements CategoryService
         this.categoryRepository = categoryRepository;
     }
 
+    /*
+        Method for listing categories
+     */
     @Override
     public List<CategoryDto> findAllCategories()
     {
@@ -34,6 +37,10 @@ public class CategoryServiceImpl implements CategoryService
         return categories.stream().map((category) -> mapToCategoryDto(category)).collect(Collectors.toList());
     }
 
+
+    /*
+        Method for creating new categories
+     */
     @Override
     public Category saveCategory(CategoryDto categoryDto)
     {

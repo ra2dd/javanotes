@@ -99,11 +99,23 @@ header, footer
 {
     width: 100%;
 }
+
+.detail-container h2
+{
+    font-size: 1.55rem;
+}
+
 .note-categories
 {
     margin: 3% 0 4% 0;
 }
-.note-categories a
+
+.note-detail-categories
+{
+    margin-bottom: 3%;
+}
+
+.note-detail-categories a
 {
     text-decoration: none;
     border: solid 1px orange;
@@ -112,7 +124,17 @@ header, footer
     margin: 0.5% 1%;
 }
 
+.note-detail-links a
+{
+    font-size: 0.8rem;
+    margin-right: 2%;
+}
 
+.note-detail-url
+{
+    font-size: 0.85rem;
+    margin-bottom: 3%;
+}
 
 /*
 Styling categories list

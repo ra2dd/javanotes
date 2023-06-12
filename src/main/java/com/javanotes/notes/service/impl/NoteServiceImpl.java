@@ -32,7 +32,10 @@ public class NoteServiceImpl implements NoteService
         this.noteRepository = noteRepository;
         this.categoryRepository = categoryRepository;
     }
-    
+
+    /*
+        Method for lisitng all notes
+     */
     @Override
     public List<NoteDto> findAllNotes()
     {
@@ -40,6 +43,9 @@ public class NoteServiceImpl implements NoteService
         return notes.stream().map((note) -> mapToNoteDto(note)).collect(Collectors.toList());
     }
 
+    /*
+        Method for creating, updating, deleting notes
+    */
     @Override
     public Note saveNote(NoteDto noteDto)
     {
@@ -58,6 +64,7 @@ public class NoteServiceImpl implements NoteService
     public void updateNote(NoteDto noteDto)
     {
         Note note = mapToNote(noteDto);
+        note.setCategories(noteRepository.findById(note.getId()).get().getCategories());
         noteRepository.save(note);
     }
 
@@ -67,6 +74,9 @@ public class NoteServiceImpl implements NoteService
         noteRepository.deleteById(noteId);
     }
 
+    /*
+        Other methods
+     */
     @Override
     public List<NoteDto> searchNotes(String query)
     {
