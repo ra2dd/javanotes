@@ -9,6 +9,10 @@
     </header>
 
     <section layout:fragment="content-container" class="content-container">
+                <div th:if="${param.success}">
+                    <p class="notes-registration-success">You registered successfully.</p>
+                </div>
+
                 <div class="note-container" th:each="note :${notes}">
                     <a th:href="@{/notes/{noteId}(noteId=${note.id})}">
                         <h2 th:text="${note.title}">Note Title</h2>
