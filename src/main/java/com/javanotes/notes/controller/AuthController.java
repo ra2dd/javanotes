@@ -48,4 +48,10 @@ public class AuthController
         userService.saveUser(userDto);
         return "redirect:/notes?success";
     }
+
+    @GetMapping("/login")
+    public String loginPage()
+    {
+        return "login";
+    }
 }
