@@ -4,8 +4,11 @@ import com.javanotes.notes.dto.CategoryDto;
 import com.javanotes.notes.dto.NoteDto;
 import com.javanotes.notes.models.Category;
 import com.javanotes.notes.models.Note;
+import com.javanotes.notes.models.UserEntity;
 import com.javanotes.notes.repository.CategoryRepository;
 import com.javanotes.notes.repository.NoteRepository;
+import com.javanotes.notes.repository.UserRepository;
+import com.javanotes.notes.security.SecurityUtil;
 import com.javanotes.notes.service.CategoryService;
 import com.javanotes.notes.service.NoteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,12 +28,14 @@ public class NoteServiceImpl implements NoteService
 {
     private NoteRepository noteRepository;
     private CategoryRepository categoryRepository;
+    private UserRepository userRepository;
 
     @Autowired
-    public NoteServiceImpl(NoteRepository noteRepository, CategoryRepository categoryRepository)
+    public NoteServiceImpl(NoteRepository noteRepository, CategoryRepository categoryRepository, UserRepository userRepository)
     {
         this.noteRepository = noteRepository;
         this.categoryRepository = categoryRepository;
+        this.userRepository = userRepository;
     }
 
     /*
@@ -49,7 +54,11 @@ public class NoteServiceImpl implements NoteService
     @Override
     public Note saveNote(NoteDto noteDto)
     {
+        String sessionUsername = SecurityUtil.getSessionUser();
+        UserEntity sessionUser = userRepository.findByUsername(sessionUsername);
         Note note = mapToNote(noteDto);
+        note.setCreatedBy(sessionUser);
+
         return noteRepository.save(note);
     }
 
@@ -63,7 +72,11 @@ public class NoteServiceImpl implements NoteService
     @Override
     public void updateNote(NoteDto noteDto)
     {
+        String sessionUsername = SecurityUtil.getSessionUser();
+        UserEntity sessionUser = userRepository.findByUsername(sessionUsername);
+
         Note note = mapToNote(noteDto);
+        note.setCreatedBy(sessionUser);
         note.setCategories(noteRepository.findById(note.getId()).get().getCategories());
         noteRepository.save(note);
     }

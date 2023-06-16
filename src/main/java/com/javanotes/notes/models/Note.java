@@ -30,6 +30,10 @@ public class Note
     @CreationTimestamp
     private LocalDateTime createTime;
 
+    @ManyToOne
+    @JoinColumn(name = "created_by", nullable = false)
+    private UserEntity createdBy;
+
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "Note_Category",
             joinColumns = @JoinColumn(name = "note_id", referencedColumnName = "id"),

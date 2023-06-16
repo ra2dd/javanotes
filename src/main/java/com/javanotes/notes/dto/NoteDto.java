@@ -1,6 +1,7 @@
 package com.javanotes.notes.dto;
 
 import com.javanotes.notes.models.Category;
+import com.javanotes.notes.models.UserEntity;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Builder;
 import lombok.Data;
@@ -21,6 +22,8 @@ public class NoteDto
     private String content;
     private String url;
     private LocalDateTime createTime;
+
+    private UserEntity createdBy;
 
     private List<CategoryDto> categories;
 }

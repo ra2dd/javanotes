@@ -23,6 +23,7 @@ public class NoteMapper
                     .content(noteDto.getContent())
                     .url(noteDto.getUrl())
                     .createTime(noteDto.getCreateTime())
+                    .createdBy(noteDto.getCreatedBy())
                     .build();
             return noteMapped;
         }
@@ -35,6 +36,7 @@ public class NoteMapper
                     .url(noteDto.getUrl())
                     .createTime(noteDto.getCreateTime())
                     .categories(noteDto.getCategories().stream().map((categoryDto) -> mapToCategory(categoryDto)).collect(Collectors.toList()))
+                    .createdBy(noteDto.getCreatedBy())
                     .build();
             return noteMapped;
         }
@@ -50,6 +52,7 @@ public class NoteMapper
                     .content(note.getContent())
                     .url(note.getUrl())
                     .createTime(note.getCreateTime())
+                    .createdBy(note.getCreatedBy())
                     .build();
             return noteDtoMapped;
         }
@@ -61,6 +64,7 @@ public class NoteMapper
                     .content(note.getContent())
                     .url(note.getUrl())
                     .createTime(note.getCreateTime())
+                    .createdBy(note.getCreatedBy())
                     .categories(note.getCategories().stream().map((category) -> mapToCategoryDto(category)).collect(Collectors.toList()))
                     .build();
             return noteDtoMapped;
