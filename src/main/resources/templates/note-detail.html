@@ -21,7 +21,7 @@
                 <a th:each="category :${note.categories}" th:href="@{/categories/{categoryId}(categoryId=${category.id})}" th:text="${category.name}"></a>
             </div>
 
-            <div class="note-detail-links">
+            <div class="note-detail-links" th:if="${sessionUser.id} == ${note.createdBy.id}">
                 <a th:href="@{/notes/{noteId}/assign-categories(noteId=${note.id})}">Assign categories</a>
                 <a th:href="@{/notes/{noteId}/update(noteId=${note.id})}">Update note</a>
                 <a th:href="@{/notes/{noteId}/delete(noteId=${note.id})}">Delete note</a>

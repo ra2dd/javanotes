@@ -166,7 +166,7 @@ form
 
     border: 2px solid orange;
     border-radius: 5px;
-    background-color: yellow;
+    background-color: rgba(191,217,198);
 }
 
 tr > th
@@ -180,7 +180,7 @@ th
     text-align: start;
 }
 
-input[type="text"], input[type="url"]
+input[type="text"], input[type="url"], input[type="password"]
 {
     padding: 0.4rem;
     width: 40vw;

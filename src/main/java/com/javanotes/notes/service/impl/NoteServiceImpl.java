@@ -56,6 +56,7 @@ public class NoteServiceImpl implements NoteService
     {
         String sessionUsername = SecurityUtil.getSessionUser();
         UserEntity sessionUser = userRepository.findByUsername(sessionUsername);
+
         Note note = mapToNote(noteDto);
         note.setCreatedBy(sessionUser);
 

@@ -4,8 +4,11 @@ import com.javanotes.notes.dto.CategoryDto;
 import com.javanotes.notes.dto.NoteDto;
 import com.javanotes.notes.models.Category;
 import com.javanotes.notes.models.Note;
+import com.javanotes.notes.models.UserEntity;
+import com.javanotes.notes.security.SecurityUtil;
 import com.javanotes.notes.service.CategoryService;
 import com.javanotes.notes.service.NoteService;
+import com.javanotes.notes.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,16 +24,18 @@ public class NoteController
 {
     private NoteService noteService;
     private CategoryService categoryService;
+    private UserService userService;
 
     @Autowired
-    public NoteController(NoteService noteService, CategoryService categoryService)
+    public NoteController(NoteService noteService, CategoryService categoryService, UserService userService)
     {
         this.noteService = noteService;
         this.categoryService = categoryService;
+        this.userService = userService;
     }
 
     /*
-        Controller for listing all notes
+        Controller for listing notes
      */
     @GetMapping("/notes")
     public String listNotes(Model model)
@@ -38,8 +43,6 @@ public class NoteController
         List<NoteDto> notes = noteService.findAllNotes();
         model.addAttribute("notes", notes);
 
-        String[] test = {"test1", "test2", "test3"};
-        model.addAttribute("test", test);
         return "notes-list";
     }
 
@@ -109,6 +112,17 @@ public class NoteController
     {
         NoteDto noteDto = noteService.findNoteById(noteId);
         model.addAttribute("note", noteDto);
+
+        UserEntity sessionUser = new UserEntity();
+        String sessionUserUsername = SecurityUtil.getSessionUser();
+        if(sessionUserUsername != null)
+        {
+            sessionUser = userService.findByUsername(sessionUserUsername);
+        }
+        model.addAttribute("sessionUser", sessionUser);
+
+        System.out.println(sessionUser.getId());
+        System.out.println(noteDto.getCreatedBy().getId());
         return "note-detail";
     }
 
