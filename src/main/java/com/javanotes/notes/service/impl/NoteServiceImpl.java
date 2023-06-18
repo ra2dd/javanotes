@@ -39,13 +39,28 @@ public class NoteServiceImpl implements NoteService
     }
 
     /*
-        Method for lisitng all notes
+        Method for lisitng notes
      */
     @Override
     public List<NoteDto> findAllNotes()
     {
         List<Note> notes = noteRepository.findAll();
         return notes.stream().map((note) -> mapToNoteDto(note)).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<NoteDto> findAllUserNotes(UserEntity sessionUser)
+    {
+        List<Note> notes = noteRepository.findAll();
+        List<Note> userNotes = new ArrayList<>();
+        for(Note note :notes)
+        {
+            if(note.getCreatedBy().getId() == sessionUser.getId())
+            {
+                userNotes.add(note);
+            }
+        }
+        return userNotes.stream().map((note) -> mapToNoteDto(note)).collect(Collectors.toList());
     }
 
     /*

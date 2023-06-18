@@ -46,6 +46,21 @@ public class NoteController
         return "notes-list";
     }
 
+    @GetMapping("/my-notes")
+    public String listUserNotes(Model model)
+    {
+        UserEntity sessionUser = new UserEntity();
+        String sessionUserUsername = SecurityUtil.getSessionUser();
+        if(sessionUserUsername != null)
+        {
+            sessionUser = userService.findByUsername(sessionUserUsername);
+        }
+
+        List<NoteDto> userNotesDto = noteService.findAllUserNotes(sessionUser);
+        model.addAttribute("notes", userNotesDto);
+
+        return "notes-list";
+    }
 
     /*
         Controllers for creating new note
