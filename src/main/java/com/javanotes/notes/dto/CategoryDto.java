@@ -2,6 +2,7 @@ package com.javanotes.notes.dto;
 
 import com.javanotes.notes.models.Note;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,6 +21,7 @@ public class CategoryDto
     private Long id;
 
     @NotEmpty(message = "You need to provide Category title.")
+    @Size(min = 3, max = 20, message = "Category name should be in range 3 - 20 characters.")
     private String name;
 
     //private List<NoteDto> notes;

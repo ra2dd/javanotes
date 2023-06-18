@@ -38,6 +38,7 @@
                     <td>
                         <input type="text" id="user-firstname" name="user-firstname" th:field="*{name}"/>
                     </td>
+                    <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="form-error"> </p>
                 </tr>
 
                 <tr>
@@ -47,6 +48,7 @@
                     <td>
                         <input type="text" id="user-secondname" name="user-secondname" th:field="*{surname}"/>
                     </td>
+                    <p th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}" class="form-error"> </p>
                 </tr>
 
                 <tr>
@@ -56,6 +58,7 @@
                     <td>
                         <input type="text" id="user-age" name="user-age" th:field="*{age}"/>
                     </td>
+                    <p th:if="${#fields.hasErrors('age')}" th:errors="*{age}" class="form-error"> </p>
                 </tr>
 
                 <tr>

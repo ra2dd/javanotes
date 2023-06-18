@@ -30,7 +30,7 @@ public class AuthController
     }
 
     @PostMapping("/register/save")
-    public String registerUser(@Valid @ModelAttribute("user") RegistrationDto userDto,
+    public String registerUser(@Valid @ModelAttribute("userDto") RegistrationDto userDto,
                                BindingResult result, Model model)
     {
         UserEntity existingUser = userService.findByUsername(userDto.getUsername());
