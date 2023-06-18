@@ -24,4 +24,6 @@ public interface NoteService
     void assignCategoriesToNote(NoteDto noteDto);
 
     List<NoteDto> findAllUserNotes(UserEntity sessionUser);
+
+    List<NoteDto> orderNotesByCreateTime(String orderCreateTimeQuery, UserEntity sessionUser);
 }

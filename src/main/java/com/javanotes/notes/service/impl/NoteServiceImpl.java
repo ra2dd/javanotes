@@ -63,6 +63,7 @@ public class NoteServiceImpl implements NoteService
         return userNotes.stream().map((note) -> mapToNoteDto(note)).collect(Collectors.toList());
     }
 
+
     /*
         Method for creating, updating, deleting notes
     */
@@ -92,8 +93,12 @@ public class NoteServiceImpl implements NoteService
         UserEntity sessionUser = userRepository.findByUsername(sessionUsername);
 
         Note note = mapToNote(noteDto);
+
+        //set fields that are not covered in update form
         note.setCreatedBy(sessionUser);
         note.setCategories(noteRepository.findById(note.getId()).get().getCategories());
+        note.setCreateTime(noteRepository.findById(note.getId()).get().getCreateTime());
+
         noteRepository.save(note);
     }
 
@@ -111,6 +116,22 @@ public class NoteServiceImpl implements NoteService
     {
         List<Note> notes = noteRepository.querySearchNotes(query);
         return notes.stream().map(note -> mapToNoteDto(note)).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<NoteDto> orderNotesByCreateTime(String orderCreateTimeQuery, UserEntity sessionUser)
+    {
+        if(orderCreateTimeQuery.equals("asc"))
+        {
+            List<Note> notes = noteRepository.queryOrderCreateTimeAsc(sessionUser.getId());
+            return notes.stream().map(note -> mapToNoteDto(note)).collect(Collectors.toList());
+        }
+        else if (orderCreateTimeQuery.equals("desc"))
+        {
+            List<Note> notes = noteRepository.queryOrderCreateTimeDesc(sessionUser.getId());
+            return notes.stream().map(note -> mapToNoteDto(note)).collect(Collectors.toList());
+        }
+        return new ArrayList<>();
     }
 
     @Override

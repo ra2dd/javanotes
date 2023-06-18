@@ -29,6 +29,16 @@
                 <input type="search" name="searchNoteQuery" />
             </form>
         </div>
+
+        <div>
+            <form th:action="@{/my-notes/order-create-time}" class="sidebar-search-form">
+                <label name="orderCreateTimeQuery">Order by Create Time Ascending</label>
+                <input type="submit" name="orderCreateTimeQuery" value="asc" />
+
+                <label name="orderCreateTimeQuery">Order by Create Time Descending</label>
+                <input type="submit" name="orderCreateTimeQuery" value="desc" />
+            </form>
+        </div>
     </section>
 
 </html>

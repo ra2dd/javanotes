@@ -80,14 +80,7 @@ public class NoteController
         {
             return "note-create";
         }
-        /*
-        int intId = 1;
-        long exampleId = intId;
-        Category exampleCategory = new Category(exampleId, "test", null);
-        Set<Category> exampleSet = new HashSet<>();
-        exampleSet.add(exampleCategory);
-        noteDto.setCategories(exampleSet);
-         */
+
         noteService.saveNote(noteDto);
         return "redirect:/notes";
     }
@@ -152,11 +145,29 @@ public class NoteController
         return "redirect:/notes";
     }
 
+    /*
+        Controllers for sorting and searching
+     */
     @GetMapping("/notes/search")
     public String searchNote(@RequestParam(value = "searchNoteQuery") String searchNoteQuery, Model model)
     {
         List<NoteDto> notes = noteService.searchNotes(searchNoteQuery);
         model.addAttribute("notes", notes);
+        return "notes-list";
+    }
+
+    @GetMapping("/my-notes/order-create-time")
+    public String orderNoteByCreateTime(@RequestParam(value = "orderCreateTimeQuery") String orderCreateTimeQuery, Model model)
+    {
+        UserEntity sessionUser = new UserEntity();
+        String sessionUserUsername = SecurityUtil.getSessionUser();
+        if(sessionUserUsername != null)
+        {
+            sessionUser = userService.findByUsername(sessionUserUsername);
+        }
+
+        List<NoteDto> notesOrdered = noteService.orderNotesByCreateTime(orderCreateTimeQuery, sessionUser);
+        model.addAttribute("notes", notesOrdered);
         return "notes-list";
     }
 
