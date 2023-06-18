@@ -2,6 +2,7 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
 >
     <head>
         <meta charset="UTF-8">
@@ -38,9 +39,11 @@
 
                 <h4>Account</h4>
                 <ul>
-                    <li> <a th:href="@{/register}">Register</a> </li>
-                    <li> <a th:href="@{/login}">Login</a></li>
-                    <li> <a th:href="@{/logout}">Logout</a></li>
+                    <li sec:authorize="!isAuthenticated()"> <a th:href="@{/register}">Register</a> </li>
+                    <li sec:authorize="!isAuthenticated()"> <a th:href="@{/login}">Login</a></li>
+
+                    <li sec:authorize="isAuthenticated()"> <a th:href="@{/logout}">Logout</a></li>
+                    <li sec:authorize="isAuthenticated()"> <a th:href="@{/my-notes}">My notes</a></li>
                 </ul>
 
 
@@ -50,7 +53,7 @@
             </aside>
 
             <footer>
-                <p>Footer</p>
+                <p>Java notes - 2023</p>
             </footer>
         </div>
     </body>

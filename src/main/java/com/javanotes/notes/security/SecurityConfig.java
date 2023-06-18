@@ -35,8 +35,8 @@ public class SecurityConfig
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .requestMatchers("/login", "/register", "/notes", "/css/**").permitAll()
-                .requestMatchers("/categories").authenticated()
+                .requestMatchers("/login", "/register", "/notes", "/stylesheets/**").permitAll()
+                .requestMatchers("/categories", "/my-notes").hasRole("LIMITED_USER")
                 .and()
                 .formLogin(form -> form
                         .loginPage("/login")
