@@ -9,6 +9,8 @@ import com.javanotes.notes.security.SecurityUtil;
 import com.javanotes.notes.service.CategoryService;
 import com.javanotes.notes.service.NoteService;
 import com.javanotes.notes.service.UserService;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -59,7 +61,7 @@ public class NoteController
         List<NoteDto> userNotesDto = noteService.findAllUserNotes(sessionUser);
         model.addAttribute("notes", userNotesDto);
 
-        return "notes-list";
+        return "my-notes-list";
     }
 
     /*
@@ -157,7 +159,7 @@ public class NoteController
     }
 
     @GetMapping("/my-notes/order-create-time")
-    public String orderNoteByCreateTime(@RequestParam(value = "orderCreateTimeQuery") String orderCreateTimeQuery, Model model)
+    public String orderNoteByCreateTime(@RequestParam(value = "orderCreateTimeQuery") String orderCreateTimeQuery, Model model, HttpServletRequest request)
     {
         UserEntity sessionUser = new UserEntity();
         String sessionUserUsername = SecurityUtil.getSessionUser();
@@ -168,7 +170,21 @@ public class NoteController
 
         List<NoteDto> notesOrdered = noteService.orderNotesByCreateTime(orderCreateTimeQuery, sessionUser);
         model.addAttribute("notes", notesOrdered);
-        return "notes-list";
+
+        /*
+        Cookie[] cookies = request.getCookies();
+        if(cookies != null)
+        {
+            cookies[0].setAttribute("ordering", orderCreateTimeQuery);
+        }
+        else
+        {
+            Cookie cookie = new Cookie("ordering", orderCreateTimeQuery);
+        }
+
+         */
+
+        return "my-notes-list";
     }
 
 

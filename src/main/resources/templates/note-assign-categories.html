@@ -14,8 +14,8 @@
             <ul>
                 <li th:each="category :${noteCategoriesDto}">
                     <div class="note-categories-checkbox-wrapper">
-                        <input type="checkbox" th:field="*{categories}" th:value="${category.id}" name="category-checkbox" id="category-checkbox">
-                        <label th:text="${category.name}" for="category-checkbox"></label>
+                        <input type="checkbox" th:field="*{categories}" th:value="${category.id}" th:name="'category-checkbox-' + ${category.id}" th:id="'category-checkbox-' + ${category.id}">
+                        <label th:text="${category.name}" th:for="'category-checkbox-' + ${category.id}"></label>
                     </div>
                 </li>
             </ul>

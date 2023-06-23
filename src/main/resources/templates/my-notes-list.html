@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+
+    <header layout:fragment="header">
+        <h1>Notes list</h1>
+    </header>
+
+    <section layout:fragment="content-container" class="content-container">
+        <div th:if="${param.success}">
+            <p class="notes-registration-success">You registered successfully.</p>
+        </div>
+
+        <div class="note-container" th:each="note :${notes}">
+            <a th:href="@{/notes/{noteId}(noteId=${note.id})}">
+                <h2 th:text="${note.title}">Note Title</h2>
+                <p th:text="${note.content}">Note Content</p>
+                <!-- <a th:href="@{/notes/{noteId}/update(noteId=${note.id})}" class="notes-list-edit">Edit</a> -->
+                <p th:text="${note.createTime}">Czas dodania</p>
+            </a>
+        </div>
+    </section>
+
+    <section layout:fragment="sidebar-layout" class="sidebar-layout">
+        <div>
+            <form th:action="@{/my-notes/order-create-time}" class="sidebar-search-form">
+                <label for="orderCreateTimeQuery">Order by Create Time Ascending</label>
+                <input type="submit" name="orderCreateTimeQuery" value="asc" id="orderCreateTimeQuery" />
+
+                <label for="orderCreateTimeQuery">Order by Create Time Descending</label>
+                <input type="submit" name="orderCreateTimeQuery" value="desc" id="orderCreateTimeQuery"/>
+            </form>
+        </div>
+    </section>
+
+</html>
