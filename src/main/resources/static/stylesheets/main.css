@@ -7,6 +7,9 @@ body
 {
     margin: 2% 4%;
     font-family: 'Ubuntu';
+
+    background: linear-gradient(rgb(115, 107, 96), rgb(164, 150, 148));
+    color: rgb(237, 231, 217);
 }
 
 /*
@@ -55,16 +58,16 @@ footer
  */
 header
 {
-    border-bottom: 2px solid orange;
+    border-bottom: 2px solid rgb(237, 231, 217);
 }
 
 footer
 {
     font-size: 0.85rem;
-    border: 2px solid orange;
+    border: 2px solid rgb(117, 103, 87);
     border-radius: 5px;
     padding: 3px;
-    background-color: lightyellow;
+    background-color: rgb(122, 114, 102);
 }
 
 footer > p
@@ -83,14 +86,15 @@ footer > p
     padding: 1%;
 
 
-    border: 2px solid orange;
+    border: 2px solid rgba(115, 107, 96);
     border-radius: 5px;
-    background-color: lightgray;
+    background-color: rgba(117, 103, 87);
 }
 
 .note-container > a
 {
     text-decoration: none;
+    color: rgb(237, 231, 217);
 }
 
 .notes-list-edit
@@ -174,9 +178,9 @@ form
     font-size: 1.4rem;
     padding: 1.2rem;
 
-    border: 2px solid orange;
+    border: 2px solid rgb(164, 150, 148);
     border-radius: 5px;
-    background-color: rgba(191,217,198);
+    background-color: rgb(115, 107, 96);
 }
 
 tr > th
@@ -190,6 +194,12 @@ th
     text-align: start;
 }
 
+input
+{
+    background-color: rgb(229, 219, 199);
+    color: rgb(82, 72, 61);
+}
+
 input[type="text"], input[type="url"], input[type="password"]
 {
     padding: 0.4rem;
@@ -200,11 +210,14 @@ input[type="text"], input[type="url"], input[type="password"]
 input[type="submit"]
 {
     font-size: 1.3rem;
+    background-color: rgb(117, 103, 87);
+    color: rgb(242, 237, 227);
 }
 
 .form-error
 {
-    font-size: 1.1rem;
+    font-size: 0.96rem;
+    margin: 1% 0;
 }
 
 /*
@@ -217,7 +230,7 @@ input[type="submit"]
     font-size: 1rem;
     margin: 4%;
 
-    background-color: lightyellow;
+    background-color: rgb(122, 114, 102);
 }
 
 .sidebar input[type="search"]
@@ -229,4 +242,9 @@ input[type="submit"]
 {
     font-size: 0.9rem;
     margin: 2% 0;
+}
+
+.sidebar a
+{
+    color: rgb(229, 220, 200);
 }
