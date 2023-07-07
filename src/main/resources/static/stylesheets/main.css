@@ -8,7 +8,11 @@ body
     margin: 2% 4%;
     font-family: 'Ubuntu';
 
-    background: linear-gradient(rgb(115, 107, 96), rgb(164, 150, 148));
+    /*
+    background: linear-gradient(rgb(133, 123, 102), rgb(155, 122, 117));
+    background: -webkit-linear-gradient(left, transparent 0%,rgb(133, 123, 102) 50%,rgb(155, 122, 117) 100%);
+     */
+    background: rgb(133, 123, 102);
     color: rgb(237, 231, 217);
 }
 
@@ -23,7 +27,12 @@ body
         "sidebar content"
         "footer footer";
     grid-template-columns: 1fr 4fr;
+    grid-template-rows: 0.6fr 6fr 0.3fr;
     gap: 20px;
+
+    position: relative;
+    min-height: 90vh;
+    max-height: 94vh;
 }
 
 header
@@ -86,9 +95,9 @@ footer > p
     padding: 1%;
 
 
-    border: 2px solid rgba(115, 107, 96);
+    border: 2px solid rgb(152, 144, 125);
     border-radius: 5px;
-    background-color: rgba(117, 103, 87);
+    background-color: rgb(87, 73, 55);
 }
 
 .note-container > a
