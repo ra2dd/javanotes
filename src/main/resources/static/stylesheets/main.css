@@ -1,19 +1,32 @@
+:root {
+    --clr1: hsl(0, 0%, 97%);
+    --clr2: hsl(0, 0%, 93%);
+    --clr3: hsl(0, 0%, 84%);
+    --clr4: hsl(0, 0%, 72%);
+    --clr5: hsl(0, 0%, 60%);
+    --clr6: hsl(0, 0%, 46%);
+    --clr7: hsl(0, 0%, 30%);
+    --clr8: hsl(0, 0%, 14%);
+    --clr9: hsl(0, 0%, 7%);
+    --radius: 0.5rem;
+}
+
 html
 {
-    font-size: 1.2rem;
+    font-size: 18px;
 }
 
 body
 {
-    margin: 2% 4%;
+    margin: 0 2rem;
     font-family: 'Ubuntu';
 
     /*
     background: linear-gradient(rgb(133, 123, 102), rgb(155, 122, 117));
     background: -webkit-linear-gradient(left, transparent 0%,rgb(133, 123, 102) 50%,rgb(155, 122, 117) 100%);
      */
-    background: rgb(133, 123, 102);
-    color: rgb(237, 231, 217);
+    background: var(--clr2);
+    color: var(--clr9);
 }
 
 /*
@@ -44,6 +57,7 @@ header
 .content-container
 {
     grid-area: content;
+    padding: 1rem;
 
     display: flex;
     flex-flow: row wrap;
@@ -67,16 +81,18 @@ footer
  */
 header
 {
-    border-bottom: 2px solid rgb(237, 231, 217);
+    border-bottom: 2px solid;
+    border-color: var(--clr4);
 }
 
 footer
 {
     font-size: 0.85rem;
-    border: 2px solid rgb(117, 103, 87);
+    border: 2px solid;
+    border-color: var(--clr2);
+    color: var(--clr8);
     border-radius: 5px;
     padding: 3px;
-    background-color: rgb(122, 114, 102);
 }
 
 footer > p
@@ -89,21 +105,27 @@ footer > p
  */
 .note-container
 {
-    flex: 1 400px;
+    flex: 1 200px;
 
-    margin: 2%;
-    padding: 1%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 2rem;
+    padding: 2rem 1rem;
 
 
-    border: 2px solid rgb(152, 144, 125);
-    border-radius: 5px;
-    background-color: rgb(87, 73, 55);
+    border: 2px solid;
+    border-color: var(--clr6);
+    border-radius: var(--radius);
+    background-color: var(--clr6);
 }
 
 .note-container > a
 {
+    display: block;
     text-decoration: none;
-    color: rgb(237, 231, 217);
+    color: var(--clr1);
 }
 
 .notes-list-edit
@@ -183,13 +205,18 @@ form
     flex-flow: column wrap;
     justify-content: center;
     align-items: center;
+    font-size: 1rem;
+    padding: 1.25rem;
 
-    font-size: 1.4rem;
-    padding: 1.2rem;
+    border-radius: var(--radius);
+    background-color: var(--clr4);
+    color: var(--clr8);
+}
 
-    border: 2px solid rgb(164, 150, 148);
-    border-radius: 5px;
-    background-color: rgb(115, 107, 96);
+tr
+{
+    display: block;
+    margin-bottom: 0.5rem;
 }
 
 tr > th
@@ -199,28 +226,52 @@ tr > th
 
 th
 {
+    display: block;
     font-weight: normal;
     text-align: start;
 }
 
+td
+{
+    display: block;
+}
+
 input
 {
-    background-color: rgb(229, 219, 199);
-    color: rgb(82, 72, 61);
+    background-color: var(--clr2);
+    color: var(--clr9);
 }
 
 input[type="text"], input[type="url"], input[type="password"]
 {
-    padding: 0.4rem;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 0.25rem;
     width: 40vw;
-    font-size: 1.1rem;
+    font-size: 1rem;
 }
 
 input[type="submit"]
 {
-    font-size: 1.3rem;
-    background-color: rgb(117, 103, 87);
-    color: rgb(242, 237, 227);
+    border: none;
+    border-radius: 0.125rem;
+    padding: 0.5rem 1rem;
+    font-weight: 700;
+    font-size: 1.125rem;
+    background-color: var(--clr7);
+    color: var(--clr3);
+    cursor: pointer;
+    margin-top: 0.5rem;
+}
+
+input[type="submit"]:hover
+{
+    background-color: var(--clr6);
+}
+
+.register-info
+{
+    font-size: 0.875rem;
 }
 
 .form-error
@@ -255,5 +306,5 @@ input[type="submit"]
 
 .sidebar a
 {
-    color: rgb(229, 220, 200);
+    color: var(--clr7);
 }
