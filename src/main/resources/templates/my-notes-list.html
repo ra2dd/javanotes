@@ -23,15 +23,13 @@
     </section>
 
     <section layout:fragment="sidebar-layout" class="sidebar-layout">
-        <div>
-            <form th:action="@{/my-notes/order-create-time}" class="sidebar-search-form">
-                <label for="orderCreateTimeQuery">Order by Create Time Ascending</label>
-                <input type="submit" name="orderCreateTimeQuery" value="asc" id="orderCreateTimeQuery" />
+        <form th:action="@{/my-notes/order-create-time}" class="sidebar-search-form">
+            <label for="orderCreateTimeQuery">Order by Create Time Ascending</label>
+            <input type="submit" name="orderCreateTimeQuery" value="asc" id="orderCreateTimeQuery" />
 
-                <label for="orderCreateTimeQuery">Order by Create Time Descending</label>
-                <input type="submit" name="orderCreateTimeQuery" value="desc" id="orderCreateTimeQuery"/>
-            </form>
-        </div>
+            <label for="orderCreateTimeQuery">Order by Create Time Descending</label>
+            <input type="submit" name="orderCreateTimeQuery" value="desc" id="orderCreateTimeQuery"/>
+        </form>
     </section>
 
 </html>

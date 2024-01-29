@@ -12,4 +12,4 @@ After creating a note users can see all their notes in a separate view.
 - Model dto validation
 
 ### Project screenshot:
-![screenshot of javanotes application](https://github.com/ra2dd/javanotes/blob/master/showcase/Java_notes_screenshot_07_07_2023.png?raw=true)
+![screenshot of javanotes application](https://github.com/ra2dd/javanotes/blob/master/showcase/Java_notes_screenshot_29_01_2024.png?raw=true)

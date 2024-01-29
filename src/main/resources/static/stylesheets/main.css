@@ -1,13 +1,13 @@
 :root {
-    --clr1: hsl(0, 0%, 97%);
-    --clr2: hsl(0, 0%, 93%);
-    --clr3: hsl(0, 0%, 84%);
-    --clr4: hsl(0, 0%, 72%);
-    --clr5: hsl(0, 0%, 60%);
-    --clr6: hsl(0, 0%, 46%);
-    --clr7: hsl(0, 0%, 30%);
-    --clr8: hsl(0, 0%, 14%);
-    --clr9: hsl(0, 0%, 7%);
+    --clr1: #f3f4f6;
+    --clr2: #e5e7eb;
+    --clr3: #d1d5db;
+    --clr4: #9ca3af;
+    --clr5: #6b7280;
+    --clr6: #4b5563;
+    --clr7: #374151;
+    --clr8: #1f2937;
+    --clr9: #111827;
     --radius: 0.5rem;
 }
 
@@ -111,21 +111,21 @@ footer > p
     align-items: center;
     justify-content: center;
 
-    margin: 2rem;
+    margin: 1rem;
     padding: 2rem 1rem;
 
 
     border: 2px solid;
-    border-color: var(--clr6);
+    border-color: var(--clr3);
     border-radius: var(--radius);
-    background-color: var(--clr6);
+    background-color: var(--clr3);
 }
 
 .note-container > a
 {
     display: block;
     text-decoration: none;
-    color: var(--clr1);
+    color: var(--clr9);
 }
 
 .notes-list-edit
@@ -283,25 +283,42 @@ input[type="submit"]:hover
 /*
     Styling sidebar
  */
+.sidebar-layout
+{
+    margin-top: 2rem;
+}
+
 .sidebar-search-form
 {
     align-items: start;
 
-    font-size: 1rem;
-    margin: 4%;
+    font-size: 0.875rem;
 
-    background-color: rgb(122, 114, 102);
+    background-color: var(--clr3);
+}
+
+.sidebar-search-form > label
+{
+    margin-bottom: 0.5rem;
 }
 
 .sidebar input[type="search"]
 {
     width: 100%;
+    border: none;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+
 }
 
 .sidebar input[type="submit"]
 {
-    font-size: 0.9rem;
-    margin: 2% 0;
+    margin: 0.5rem;
+}
+
+#orderCreateTimeQuery
+{
+    margin: 0;
 }
 
 .sidebar a
